@@ -1,5 +1,6 @@
 import React from "react";
 import { useEffect, useState } from "react";
+import moment from "moment";
 import { useForm } from "react-hook-form";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
@@ -88,7 +89,9 @@ function ChatRoomPage() {
                             <div className="row">
                                 <div className="col-2">{m.author}</div>
                                 <div className="col">{m.message}</div>
-                                <div className="col-3">{m.createdAt}</div>
+                                <div className="col-3">
+                                    {moment(m.createdAt).format("LLLL")}
+                                </div>
                             </div>
                         </div>
                     );
