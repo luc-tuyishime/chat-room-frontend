@@ -74,6 +74,8 @@ function ChatRoomPage() {
         }
     });
 
+    console.log("rooms", rooms);
+
     return (
         <div className="chat-room-page">
             <h1>
