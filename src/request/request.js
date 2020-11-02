@@ -1,9 +1,13 @@
-const axios = require("axios");
-const APIURL = "http://localhost:7000";
+import axios from "axios";
+import "dotenv/config";
 
-export const getChatRooms = () => axios.get(`${APIURL}/chatroom/chatrooms`);
+const { REACT_APP_APIURL } = process.env;
+console.log("APIURL", REACT_APP_APIURL);
+
+export const getChatRooms = () => axios.get(`${REACT_APP_APIURL}/chatroom/chatrooms`);
 
 export const getChatRoomMessages = (chatRoomName) =>
-    axios.get(`${APIURL}/chatroom/chatroom/messages/${chatRoomName}`);
+    axios.get(`${REACT_APP_APIURL}/chatroom/chatroom/messages/${chatRoomName}`);
 
-export const joinRoom = (room) => axios.post(`${APIURL}/chatroom/chatroom`, { room });
+export const joinRoom = (room) =>
+    axios.post(`${REACT_APP_APIURL}/chatroom/chatroom`, { room });

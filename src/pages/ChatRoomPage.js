@@ -9,8 +9,9 @@ import io from "socket.io-client";
 import "./ChatRoomPage.css";
 import { getChatRoomMessages, getChatRooms } from "../request/request";
 
-const SOCKET_IO_URL = "http://localhost:7000";
-const socket = io(SOCKET_IO_URL);
+const { REACT_APP_APIURL } = process.env;
+
+const socket = io(REACT_APP_APIURL);
 
 const getChatData = () => {
     return JSON.parse(localStorage.getItem("chatData"));
@@ -27,9 +28,6 @@ function ChatRoomPage() {
     const { register, handleSubmit, setValue } = useForm();
 
     const onSubmit = (dataI) => {
-        const getIt = Object.values(dataI);
-        const finalValue = getIt?.[0];
-
         const isValid = schema.validate(dataI);
         if (!isValid) {
             return;
@@ -74,7 +72,7 @@ function ChatRoomPage() {
             connectToRoom();
             getRooms();
         }
-    }, [register]);
+    });
 
     return (
         <div className="chat-room-page">
